@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>The Chumo Mind</title>
+  <title>Stream Control Transmission Protocol (SCTP): An Overview - The Chumo Mind</title>
   <meta name="author" content="Ed Gonzalez">
 
   
@@ -20,7 +20,7 @@ doesn&# &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://chulochumo.github.com/">
+  <link rel="canonical" href="http://chulochumo.github.com/blog/2013/03/20/stream-control-transmission-protocol-sctp-an-overview/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -64,15 +64,12 @@ doesn&# &hellip;">
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/03/20/stream-control-transmission-protocol-sctp-an-overview/">Stream Control Transmission Protocol (SCTP): An Overview</a></h1>
+      <h1 class="entry-title">Stream Control Transmission Protocol (SCTP): An Overview</h1>
     
     
       <p class="meta">
@@ -95,7 +92,7 @@ doesn&# &hellip;">
   </header>
 
 
-  <div class="entry-content"><p>This is the first of several planned posts on SCTP that outline the
+<div class="entry-content"><p>This is the first of several planned posts on SCTP that outline the
 protocol and some of the research I&#8217;ve been doing. This protocol
 doesn&#8217;t get <em>too</em> much attention outside of the Telecom industry so
 hopefully it will be an interesting read. I assume readers have some
@@ -119,28 +116,135 @@ responsibilities like TCP. It is a reliable, message oriented
 transport protocol that bridges and adds to a lot of the features
 found in UDP and TCP.</p>
 
+<!-- more -->
+
+
+<h3>Like TCP, SCTP&#8230;</h3>
+
+<ul>
+<li>is <strong>Connection Oriented</strong> - This means that a connection is
+established at both endpoints prior to sending any data. This is
+unlike UDP where the sender starts sending data towards an IP address
+with no prior knowledge of the connection.</li>
+<li>provides <strong>Reliable Transfer</strong> - Data given to the protocol is
+assured to reach it&#8217;s destination as long as there is a connection.
+The protocol handles lost packets, congestion, etc.</li>
+<li>provides <strong>Ordered Data Delivery</strong> - Pretty self explanatory.</li>
+<li>provides <strong>Flow and Congestion Control</strong> - The protocol is &#8220;smart&#8221;
+in the way it sends data so that unfavorable circumstances do not
+arise such as over congesting the network or overloading the
+receiver&#8217;s resources.</li>
+<li>provides <strong>Path MTU Discovery</strong> - MTU is the Maximum Transmission
+Unit which is the maximum packet size that a network can handle
+without fragmenting packets.</li>
+</ul>
+
+
+<h3>Like UDP, SCTP&#8230;</h3>
+
+<ul>
+<li>is <strong>Message Oriented</strong> - Unlike TCP that treats all data as a
+formatless stream of bytes, SCTP and UDP preserve message boundaries
+given to it from the higher layers.</li>
+<li>provides <strong>Unordered Data Delivery</strong> - Although this seems
+contradictory to a previous statement it is true. SCTP
+supports both!</li>
+</ul>
+
+
+<h3>Unlike TCP and UDP, SCTP&#8230;</h3>
+
+<ul>
+<li>provides <strong>Message Bundling</strong> - Small messages are automatically
+bundled together in the same packet if they fit. TCP does this at
+the Byte level with no awareness of the actual message boundaries.</li>
+<li>provides <strong>Multi-Stream Support</strong> - Within a single connection (in
+SCTP terms <em>single association</em>) there can exist many independent
+streams. They may be used for concurrent transfer or for independent
+data transfer.</li>
+<li>provides <strong>Multi-Homed Hosts Support</strong> - A single association can
+support multiple IP&#8217;s. These may exist on a single network interface
+card or on multiple network interface cards with each assigned an IP
+address.</li>
+<li>provides <strong>Builtin Reachability Check</strong> - Similar to TCP&#8217;s
+&#8220;keep-alive&#8221; mechanism, SCTP&#8217;s heartbeat periodically checks to see
+whether a path/connection is still reachable. The main goal is to
+aid in a failover situation in contrast to TCP&#8217;s long-term state
+cleanup goal.</li>
+<li>provides <strong>State Cookie Mechanism</strong> - This security cookie is used to
+prevent SYN flood attacks where phony connections are requested in
+order to use up server resources.</li>
+</ul>
+
+
+<p>I hope these features have your interest peaked with this nifty
+transport protocol as I will continue posting about it. :P</p>
+
+<h3>References</h3>
+
+<ol>
+<li><span id="stewart_book">R.R. Stewart and Q. Xie, <i>Stream Control Transmission Protocol (SCTP) A Reference Guide</i>. Addison Wesley, 2002. </span></li>
+<li><span id="rfc_2960">R. Stewart, Q. Xie, K. Morneault, C. Sharp, H. Schwarzbauer, T. Taylor, I. Rytina, M. Kalla, L. Zhang and V. Paxson, “Stream Control Transmission Protocol, RFC2960”, <i>RFC 2960</i>. Oct-2000 [Online]. Available: http://www.ietf.org/rfc/rfc2960.txt</span></li>
+<li><span id="rfc_4960">R. Stewart, “Stream Control Transmission Protocol, RFC4960”. Sep-2007 [Online]. Available: http://www.ietf.org/rfc/rfc4960.txt</span></li>
+</ol>
+
 </div>
+
+
+  <footer>
+    <p class="meta">
+      
   
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/03/20/stream-control-transmission-protocol-sctp-an-overview/">Read on &rarr;</a>
-    </footer>
+
+<span class="byline author vcard">Posted by <span class="fn">Ed Gonzalez</span></span>
+
+      
+
+
+
+
+
+
+
+
   
 
 
-    </article>
+<time datetime="2013-03-20T06:24:00-05:00" pubdate data-updated="true">Mar 20<span>th</span>, 2013</time>
+      
+
+<span class="categories">
   
-  <div class="pagination">
+    <a class='category' href='/blog/categories/sctp/'>SCTP</a>
+  
+</span>
+
+
+    </p>
     
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://chulochumo.github.com/blog/2013/03/20/stream-control-transmission-protocol-sctp-an-overview/" data-via="" data-counturl="http://chulochumo.github.com/blog/2013/03/20/stream-control-transmission-protocol-sctp-an-overview/" >Tweet</a>
+  
+  
+  
 </div>
+
+    
+    <p class="meta">
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
 <aside class="sidebar">
   
     <section>
   <h1>About Me</h1>
-  <p>I&#8217;m a 23 year old SE Grad Student with an
+  <p>I'm a 23 year old SE Grad Student with an
   undergraduate degree in EE. I love engineering,
   coding, water polo, and playing my violin in down moods.</p>
   <p>I write this blog to order my flukes, findings, tricks and
@@ -161,7 +265,7 @@ found in UDP and TCP.</p>
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   
   <a href="https://github.com/chulochumo">@chulochumo</a> on GitHub
@@ -194,6 +298,7 @@ found in UDP and TCP.</p>
 
   
 </aside>
+
 
     </div>
   </div>

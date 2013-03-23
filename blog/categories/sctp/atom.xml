@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[The Chumo Mind]]></title>
-  <link href="http://chulochumo.github.com/atom.xml" rel="self"/>
+  <title><![CDATA[Category: SCTP | The Chumo Mind]]></title>
+  <link href="http://chulochumo.github.com/blog/categories/sctp/atom.xml" rel="self"/>
   <link href="http://chulochumo.github.com/"/>
   <updated>2013-03-23T08:52:32-05:00</updated>
   <id>http://chulochumo.github.com/</id>
@@ -19,8 +19,8 @@
     <updated>2013-03-20T06:24:00-05:00</updated>
     <id>http://chulochumo.github.com/blog/2013/03/20/stream-control-transmission-protocol-sctp-an-overview</id>
     <content type="html"><![CDATA[<p>This is the first of several planned posts on SCTP that outline the
-protocol and some of the research I&#8217;ve been doing. This protocol
-doesn&#8217;t get <em>too</em> much attention outside of the Telecom industry so
+protocol and some of the research I've been doing. This protocol
+doesn't get <em>too</em> much attention outside of the Telecom industry so
 hopefully it will be an interesting read. I assume readers have some
 previous exposure to networks and protocols but I will try to explain
 some concepts on the fly.</p>
@@ -37,7 +37,7 @@ to the industry. It became an IETF Proposed Standard in 2000 and was published a
 RFC 2960 which was later replaced by RFC 4960 in 2007.</p>
 
 <p>To me, SCTP is like a younger sibling of TCP and UDP. It retains some
-of the fast and loose attitude of UDP but still takes care of it&#8217;s
+of the fast and loose attitude of UDP but still takes care of it's
 responsibilities like TCP. It is a reliable, message oriented
 transport protocol that bridges and adds to a lot of the features
 found in UDP and TCP.</p>
@@ -45,7 +45,7 @@ found in UDP and TCP.</p>
 <!-- more -->
 
 
-<h3>Like TCP, SCTP&#8230;</h3>
+<h3>Like TCP, SCTP...</h3>
 
 <ul>
 <li>is <strong>Connection Oriented</strong> - This means that a connection is
@@ -53,20 +53,20 @@ established at both endpoints prior to sending any data. This is
 unlike UDP where the sender starts sending data towards an IP address
 with no prior knowledge of the connection.</li>
 <li>provides <strong>Reliable Transfer</strong> - Data given to the protocol is
-assured to reach it&#8217;s destination as long as there is a connection.
+assured to reach it's destination as long as there is a connection.
 The protocol handles lost packets, congestion, etc.</li>
 <li>provides <strong>Ordered Data Delivery</strong> - Pretty self explanatory.</li>
-<li>provides <strong>Flow and Congestion Control</strong> - The protocol is &#8220;smart&#8221;
+<li>provides <strong>Flow and Congestion Control</strong> - The protocol is "smart"
 in the way it sends data so that unfavorable circumstances do not
 arise such as over congesting the network or overloading the
-receiver&#8217;s resources.</li>
+receiver's resources.</li>
 <li>provides <strong>Path MTU Discovery</strong> - MTU is the Maximum Transmission
 Unit which is the maximum packet size that a network can handle
 without fragmenting packets.</li>
 </ul>
 
 
-<h3>Like UDP, SCTP&#8230;</h3>
+<h3>Like UDP, SCTP...</h3>
 
 <ul>
 <li>is <strong>Message Oriented</strong> - Unlike TCP that treats all data as a
@@ -78,7 +78,7 @@ supports both!</li>
 </ul>
 
 
-<h3>Unlike TCP and UDP, SCTP&#8230;</h3>
+<h3>Unlike TCP and UDP, SCTP...</h3>
 
 <ul>
 <li>provides <strong>Message Bundling</strong> - Small messages are automatically
@@ -89,13 +89,13 @@ SCTP terms <em>single association</em>) there can exist many independent
 streams. They may be used for concurrent transfer or for independent
 data transfer.</li>
 <li>provides <strong>Multi-Homed Hosts Support</strong> - A single association can
-support multiple IP&#8217;s. These may exist on a single network interface
+support multiple IP's. These may exist on a single network interface
 card or on multiple network interface cards with each assigned an IP
 address.</li>
-<li>provides <strong>Builtin Reachability Check</strong> - Similar to TCP&#8217;s
-&#8220;keep-alive&#8221; mechanism, SCTP&#8217;s heartbeat periodically checks to see
+<li>provides <strong>Builtin Reachability Check</strong> - Similar to TCP's
+"keep-alive" mechanism, SCTP's heartbeat periodically checks to see
 whether a path/connection is still reachable. The main goal is to
-aid in a failover situation in contrast to TCP&#8217;s long-term state
+aid in a failover situation in contrast to TCP's long-term state
 cleanup goal.</li>
 <li>provides <strong>State Cookie Mechanism</strong> - This security cookie is used to
 prevent SYN flood attacks where phony connections are requested in
